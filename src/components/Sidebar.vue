@@ -1,15 +1,30 @@
 <template>
+  <!-- Mobile Overlay -->
+  <div 
+    v-if="isMobile && showMobile"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 transition-opacity duration-300"
+    @click="emit('closeMobile')"
+  ></div>
+
   <aside 
     class="sidebar fixed top-0 left-0 h-full z-40 backdrop-blur-md transition-all duration-300 ease-in-out"
     :class="sidebarClasses"
   >
+    <!-- Mobile Close Button -->
+    <button
+      v-if="isMobile && showMobile"
+      @click="emit('closeMobile')"
+      class="absolute top-4 right-4 p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors lg:hidden"
+    >
+      <IconX class="h-5 w-5 text-gray-300" />
+    </button>
+
     <div class="flex flex-col h-full p-4">
       <!-- Logo Section -->
       <div 
         class="flex items-center mb-8 shrink-0 transition-all duration-300 ease-in-out"
         :class="{ 'justify-center': isCollapsed && !isMobile }"
       >
-        <!-- Updated to use Tabler icon -->
         <IconShield
           class="h-8 w-8 text-cyan-400 shrink-0 transition-all duration-300 ease-in-out"
         />
@@ -25,7 +40,6 @@
       <nav class="flex-grow overflow-hidden">
         <ul class="space-y-2">
           <li v-for="item in navigationItems" :key="item.name">
-            <!-- Updated to use router-link for SPA navigation -->
             <router-link
               :to="item.path"
               class="sidebar-item group"
@@ -33,6 +47,7 @@
                 'justify-center': isCollapsed && !isMobile
               }"
               active-class="active"
+              @click="handleNavClick"
             >
               <component 
                 :is="item.icon" 
@@ -68,7 +83,9 @@ import {
   IconChartBar, 
   IconUsers, 
   IconSettings,
-  IconShield
+  IconShield,
+  IconX,
+  IconBook
 } from '@tabler/icons-vue'
 
 const props = defineProps({
@@ -105,8 +122,15 @@ const navigationItems = [
   { name: 'Dashboard', icon: IconDashboard, path: '/' },
   { name: 'Analytics', icon: IconChartBar, path: '/analytics' },
   { name: 'Users', icon: IconUsers, path: '/users' },
-  { name: 'Settings', icon: IconSettings, path: '/settings' }
+  { name: 'Settings', icon: IconSettings, path: '/settings' },
+  { name: 'Guide', icon: IconBook, path: '/guide' }
 ]
+
+const handleNavClick = () => {
+  if (isMobile.value && props.showMobile) {
+    emit('closeMobile')
+  }
+}
 
 const handleClickOutside = (event) => {
   if (isMobile.value && props.showMobile) {

@@ -3,12 +3,14 @@ import Dashboard from "../pages/Dashboard.vue"
 import Analytics from "../pages/Analytics.vue"
 import Users from "../pages/Users.vue"
 import Settings from "../pages/Settings.vue"
+import Guide from "../pages/Guide.vue"
 
 const routes = [
   { path: "/", name: "Dashboard", component: Dashboard },
   { path: "/analytics", name: "Analytics", component: Analytics },
   { path: "/users", name: "Users", component: Users },
   { path: "/settings", name: "Settings", component: Settings },
+  { path: "/guide", name: "Guide", component: Guide },
 ]
 
 const router = createRouter({
