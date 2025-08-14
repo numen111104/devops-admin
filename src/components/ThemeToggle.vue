@@ -4,12 +4,13 @@
     class="w-full sidebar-item text-gray-400"
     :class="{ 'justify-center': isCollapsed }"
   >
+    <!-- Updated to use Tabler icons -->
     <component 
-      :is="currentTheme === 'dark' ? SunIcon : MoonIcon" 
-      class="nav-icon"
+      :is="currentTheme === 'dark' ? IconSun : IconMoon" 
+      class="nav-icon shrink-0 transition-all duration-300 ease-in-out"
     />
     <span
-      class="nav-text"
+      class="nav-text transition-all duration-300 ease-in-out"
       :class="navTextClasses"
     >
       {{ currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode' }}
@@ -19,7 +20,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { SunIcon, MoonIcon } from './icons'
+import { IconSun, IconMoon } from '@tabler/icons-vue'
 
 defineProps({
   isCollapsed: Boolean,

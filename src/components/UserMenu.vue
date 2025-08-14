@@ -7,9 +7,11 @@
       <img
         src="https://i.pravatar.cc/40?u=admin"
         alt="User Avatar"
-        class="h-9 w-9 rounded-full border-2 border-cyan-400/50"
+        class="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-cyan-400/50"
       />
-      <span class="hidden md:inline text-gray-200">root_admin</span>
+      <span class="hidden md:inline text-gray-200 text-sm">root_admin</span>
+      <!-- Added Tabler chevron icon for better UX -->
+      <IconChevronDown class="h-4 w-4 text-gray-400 hidden md:inline transition-transform duration-200" :class="{ 'rotate-180': showMenu }" />
     </button>
     
     <Transition
@@ -24,23 +26,27 @@
         v-show="showMenu"
         class="absolute right-0 mt-2 w-48 terminal-window rounded-lg shadow-lg py-1 z-50"
       >
+        <!-- Updated to use Tabler icons -->
         <a
           href="#"
-          class="block px-4 py-2 text-sm hover:bg-cyan-500/10 text-gray-300 transition-colors duration-200"
+          class="flex items-center px-4 py-2 text-sm hover:bg-cyan-500/10 text-gray-300 transition-colors duration-200"
         >
+          <IconUser class="h-4 w-4 mr-3" />
           Profile
         </a>
         <a
           href="#"
-          class="block px-4 py-2 text-sm hover:bg-cyan-500/10 text-gray-300 transition-colors duration-200"
+          class="flex items-center px-4 py-2 text-sm hover:bg-cyan-500/10 text-gray-300 transition-colors duration-200"
         >
+          <IconSettings class="h-4 w-4 mr-3" />
           Settings
         </a>
         <div class="border-t border-cyan-300/20 my-1"></div>
         <a
           href="#"
-          class="block px-4 py-2 text-sm hover:bg-red-500/10 text-red-400 transition-colors duration-200"
+          class="flex items-center px-4 py-2 text-sm hover:bg-red-500/10 text-red-400 transition-colors duration-200"
         >
+          <IconLogout class="h-4 w-4 mr-3" />
           Logout
         </a>
       </div>
@@ -50,6 +56,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { IconChevronDown, IconUser, IconSettings, IconLogout } from '@tabler/icons-vue'
 
 const showMenu = ref(false)
 

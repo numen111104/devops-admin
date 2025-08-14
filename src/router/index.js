@@ -1,13 +1,8 @@
-import { createApp } from "vue"
 import { createRouter, createWebHistory } from "vue-router"
-import "./style.css"
-import App from "./App.vue"
-
-// Import pages
-import Dashboard from "./pages/Dashboard.vue"
-import Analytics from "./pages/Analytics.vue"
-import Users from "./pages/Users.vue"
-import Settings from "./pages/Settings.vue"
+import Dashboard from "../pages/Dashboard.vue"
+import Analytics from "../pages/Analytics.vue"
+import Users from "../pages/Users.vue"
+import Settings from "../pages/Settings.vue"
 
 const routes = [
   { path: "/", name: "Dashboard", component: Dashboard },
@@ -21,6 +16,4 @@ const router = createRouter({
   routes,
 })
 
-const app = createApp(App)
-app.use(router)
-app.mount("#app")
+export default router

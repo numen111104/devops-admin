@@ -1,6 +1,6 @@
 <template>
   <aside 
-    class="sidebar fixed top-0 left-0 h-full z-40 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden"
+    class="sidebar fixed top-0 left-0 h-full z-40 backdrop-blur-md transition-all duration-300 ease-in-out"
     :class="sidebarClasses"
   >
     <div class="flex flex-col h-full p-4">
@@ -9,13 +9,10 @@
         class="flex items-center mb-8 shrink-0 transition-all duration-300 ease-in-out"
         :class="{ 'justify-center': isCollapsed && !isMobile }"
       >
-        <svg
+        <!-- Updated to use Tabler icon -->
+        <IconShield
           class="h-8 w-8 text-cyan-400 shrink-0 transition-all duration-300 ease-in-out"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z" />
-        </svg>
+        />
         <span
           class="ml-3 text-xl font-semibold text-gray-200 whitespace-nowrap transition-all duration-300 ease-in-out"
           :class="logoTextClasses"
@@ -25,35 +22,35 @@
       </div>
 
       <!-- Navigation -->
-      <nav class="flex-grow">
+      <nav class="flex-grow overflow-hidden">
         <ul class="space-y-2">
           <li v-for="item in navigationItems" :key="item.name">
-            <a
-              href="#"
-              class="sidebar-item"
+            <!-- Updated to use router-link for SPA navigation -->
+            <router-link
+              :to="item.path"
+              class="sidebar-item group"
               :class="{ 
-                'active': item.active,
-                'text-gray-400': !item.active,
                 'justify-center': isCollapsed && !isMobile
               }"
+              active-class="active"
             >
               <component 
                 :is="item.icon" 
-                class="nav-icon"
+                class="nav-icon shrink-0 transition-all duration-300 ease-in-out"
               />
               <span
-                class="nav-text"
+                class="nav-text transition-all duration-300 ease-in-out"
                 :class="navTextClasses"
               >
                 {{ item.name }}
               </span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
 
       <!-- Theme Toggle -->
-      <div class="shrink-0">
+      <div class="shrink-0 mt-4">
         <ThemeToggle 
           :is-collapsed="isCollapsed && !isMobile"
           :nav-text-classes="navTextClasses"
@@ -67,11 +64,12 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import ThemeToggle from './ThemeToggle.vue'
 import { 
-  HomeIcon, 
-  ChartBarIcon, 
-  UsersIcon, 
-  CogIcon 
-} from './icons'
+  IconDashboard, 
+  IconChartBar, 
+  IconUsers, 
+  IconSettings,
+  IconShield
+} from '@tabler/icons-vue'
 
 const props = defineProps({
   isCollapsed: Boolean,
@@ -82,7 +80,7 @@ const emit = defineEmits(['toggle', 'closeMobile'])
 
 const isMobile = computed(() => {
   if (typeof window === 'undefined') return false
-  return window.innerWidth < 768
+  return window.innerWidth < 1024 // Updated breakpoint to lg (1024px)
 })
 
 const sidebarClasses = computed(() => ({
@@ -104,10 +102,10 @@ const navTextClasses = computed(() => ({
 }))
 
 const navigationItems = [
-  { name: 'Dashboard', icon: HomeIcon, active: true },
-  { name: 'Analytics', icon: ChartBarIcon, active: false },
-  { name: 'Users', icon: UsersIcon, active: false },
-  { name: 'Settings', icon: CogIcon, active: false }
+  { name: 'Dashboard', icon: IconDashboard, path: '/' },
+  { name: 'Analytics', icon: IconChartBar, path: '/analytics' },
+  { name: 'Users', icon: IconUsers, path: '/users' },
+  { name: 'Settings', icon: IconSettings, path: '/settings' }
 ]
 
 const handleClickOutside = (event) => {
