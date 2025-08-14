@@ -1,0 +1,98 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap");
+
+@layer base {
+  * {
+    font-family: "Fira Code", monospace;
+    border-color: rgba(0, 255, 255, 0.3);
+  }
+
+  body {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
+
+@layer components {
+  .glow {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    border: 1px solid rgba(0, 255, 255, 0.8);
+  }
+
+  .terminal-window {
+    @apply backdrop-blur-md border border-cyan-300/30 transition-all duration-300 ease-in-out;
+    background: rgba(0, 20, 20, 0.85);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  }
+
+  .terminal-window:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .sidebar-item {
+    @apply flex items-center p-2 rounded-lg transition-all duration-300 ease-in-out;
+  }
+
+  .sidebar-item:hover {
+    @apply bg-cyan-500/10;
+  }
+
+  .sidebar-item.active {
+    @apply bg-cyan-500 text-gray-900 font-bold;
+  }
+
+  .nav-icon {
+    @apply h-6 w-6 shrink-0 transition-all duration-300 ease-in-out;
+  }
+
+  .nav-text {
+    @apply ml-4 transition-all duration-300 ease-in-out whitespace-nowrap;
+  }
+
+  .grid-pattern {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+}
+
+@layer utilities {
+  .dark body {
+    @apply bg-cyber-dark text-gray-200;
+  }
+
+  .dark .terminal-window {
+    background: rgba(0, 20, 20, 0.8);
+    @apply border-cyan-300/30;
+  }
+
+  .dark .sidebar,
+  .dark .header {
+    background: rgba(0, 15, 15, 0.8);
+  }
+
+  .light body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  .light .terminal-window {
+    background: rgba(255, 255, 255, 0.8);
+    @apply border-teal-400/40 shadow-lg;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .light .sidebar,
+  .light .header {
+    background: rgba(240, 245, 245, 0.8);
+  }
+
+  .light .grid-pattern {
+    background-image: linear-gradient(rgba(0, 128, 128, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 128, 128, 0.1) 1px, transparent 1px);
+  }
+}

@@ -1,0 +1,10 @@
+// Icon components for better organization
+export { default as HomeIcon } from "./HomeIcon.vue"
+export { default as ChartBarIcon } from "./ChartBarIcon.vue"
+export { default as UsersIcon } from "./UsersIcon.vue"
+export { default as CogIcon } from "./CogIcon.vue"
+export { default as MenuIcon } from "./MenuIcon.vue"
+export { default as SearchIcon } from "./SearchIcon.vue"
+export { default as BellIcon } from "./BellIcon.vue"
+export { default as SunIcon } from "./SunIcon.vue"
+export { default as MoonIcon } from "./MoonIcon.vue"
