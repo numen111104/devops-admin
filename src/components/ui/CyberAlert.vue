@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-if="show"
-    :class="alertClasses"
-    role="alert"
-  >
+  <div v-if="show" :class="alertClasses" role="alert">
     <div class="flex items-start">
       <component :is="iconComponent" :class="iconClasses" />
       <div class="flex-1 ml-3">
@@ -14,12 +10,9 @@
           <slot>{{ message }}</slot>
         </div>
       </div>
-      <button
-        v-if="dismissible"
-        @click="dismiss"
+      <button v-if="dismissible" @click="dismiss"
         class="ml-auto -mx-1.5 -my-1.5 rounded-lg p-1.5 inline-flex h-8 w-8 hover:bg-black/10 focus:ring-2 focus:ring-offset-2"
-        :class="dismissClasses"
-      >
+        :class="dismissClasses">
         <IconX class="w-4 h-4" />
       </button>
     </div>
@@ -28,11 +21,11 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { 
-  IconInfoCircle, 
-  IconCheckCircle, 
-  IconExclamationTriangle, 
-  IconXCircle,
+import {
+  IconInfoCircle,
+  IconCircleDashedNumber1,
+  IconExclamationCircle,
+  IconCircleX,
   IconX
 } from '@tabler/icons-vue'
 
@@ -66,9 +59,9 @@ const dismiss = () => {
 
 const iconComponent = computed(() => {
   const icons = {
-    success: IconCheckCircle,
-    danger: IconXCircle,
-    warning: IconExclamationTriangle,
+    success: IconCircleDashedNumber1,
+    danger: IconCircleX,
+    warning: IconExclamationCircle,
     info: IconInfoCircle
   }
   return icons[props.variant]

@@ -1,37 +1,24 @@
 <template>
   <!-- Mobile Overlay -->
-  <div 
-    v-if="isMobile && showMobile"
+  <div v-if="isMobile && showMobile"
     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 transition-opacity duration-300"
-    @click="emit('closeMobile')"
-  ></div>
+    @click="emit('closeMobile')"></div>
 
-  <aside 
-    class="sidebar fixed top-0 left-0 h-full z-40 backdrop-blur-md transition-all duration-300 ease-in-out"
-    :class="sidebarClasses"
-  >
+  <aside class="sidebar fixed top-0 left-0 h-full z-40 backdrop-blur-md transition-all duration-300 ease-in-out"
+    :class="sidebarClasses">
     <!-- Mobile Close Button -->
-    <button
-      v-if="isMobile && showMobile"
-      @click="emit('closeMobile')"
-      class="absolute top-4 right-4 p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors lg:hidden"
-    >
+    <button v-if="isMobile && showMobile" @click="emit('closeMobile')"
+      class="absolute top-4 right-4 p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors lg:hidden">
       <IconX class="h-5 w-5 text-gray-300" />
     </button>
 
     <div class="flex flex-col h-full p-4">
       <!-- Logo Section -->
-      <div 
-        class="flex items-center mb-8 shrink-0 transition-all duration-300 ease-in-out"
-        :class="{ 'justify-center': isCollapsed && !isMobile }"
-      >
-        <IconShield
-          class="h-8 w-8 text-cyan-400 shrink-0 transition-all duration-300 ease-in-out"
-        />
-        <span
-          class="ml-3 text-xl font-semibold text-gray-200 whitespace-nowrap transition-all duration-300 ease-in-out"
-          :class="logoTextClasses"
-        >
+      <div class="flex items-center mb-8 shrink-0 transition-all duration-300 ease-in-out"
+        :class="{ 'justify-center': isCollapsed && !isMobile }">
+        <IconShield class="h-8 w-8 text-cyan-400 shrink-0 transition-all duration-300 ease-in-out" />
+        <span class="ml-3 text-xl font-semibold text-gray-200 whitespace-nowrap transition-all duration-300 ease-in-out"
+          :class="logoTextClasses">
           CYBEROPS
         </span>
       </div>
@@ -40,23 +27,11 @@
       <nav class="flex-grow overflow-hidden">
         <ul class="space-y-2">
           <li v-for="item in navigationItems" :key="item.name">
-            <router-link
-              :to="item.path"
-              class="sidebar-item group"
-              :class="{ 
-                'justify-center': isCollapsed && !isMobile
-              }"
-              active-class="active"
-              @click="handleNavClick"
-            >
-              <component 
-                :is="item.icon" 
-                class="nav-icon shrink-0 transition-all duration-300 ease-in-out"
-              />
-              <span
-                class="nav-text transition-all duration-300 ease-in-out"
-                :class="navTextClasses"
-              >
+            <router-link :to="item.path" class="sidebar-item group" :class="{
+              'justify-center': isCollapsed && !isMobile
+            }" active-class="active" @click="handleNavClick">
+              <component :is="item.icon" class="nav-icon shrink-0 transition-all duration-300 ease-in-out" />
+              <span class="nav-text transition-all duration-300 ease-in-out" :class="navTextClasses">
                 {{ item.name }}
               </span>
             </router-link>
@@ -66,10 +41,7 @@
 
       <!-- Theme Toggle -->
       <div class="shrink-0 mt-4">
-        <ThemeToggle 
-          :is-collapsed="isCollapsed && !isMobile"
-          :nav-text-classes="navTextClasses"
-        />
+        <ThemeToggle :is-collapsed="isCollapsed && !isMobile" :nav-text-classes="navTextClasses" />
       </div>
     </div>
   </aside>
@@ -78,10 +50,10 @@
 <script setup>
 import { computed, onMounted, onUnmounted } from 'vue'
 import ThemeToggle from './ThemeToggle.vue'
-import { 
-  IconDashboard, 
-  IconChartBar, 
-  IconUsers, 
+import {
+  IconDashboard,
+  IconChartBar,
+  IconUsers,
   IconSettings,
   IconShield,
   IconX,

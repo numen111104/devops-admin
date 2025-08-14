@@ -1,26 +1,13 @@
-import { createApp } from "vue"
-import { createRouter, createWebHistory } from "vue-router"
-import "./style.css"
-import App from "./App.vue"
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import router from "./router/index.js";
+import { createPinia } from "pinia";
 
-// Import pages
-import Dashboard from "./pages/Dashboard.vue"
-import Analytics from "./pages/Analytics.vue"
-import Users from "./pages/Users.vue"
-import Settings from "./pages/Settings.vue"
+const app = createApp(App);
+const pinia = createPinia();
 
-const routes = [
-  { path: "/", name: "Dashboard", component: Dashboard },
-  { path: "/analytics", name: "Analytics", component: Analytics },
-  { path: "/users", name: "Users", component: Users },
-  { path: "/settings", name: "Settings", component: Settings },
-]
+app.use(router);
+app.use(pinia);
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
-
-const app = createApp(App)
-app.use(router)
-app.mount("#app")
+app.mount("#app");

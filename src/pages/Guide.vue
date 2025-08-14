@@ -1,22 +1,22 @@
 <template>
-  <div class="space-y-8">
+  <div class="space-y-8 border rounded-lg bg-gray-800/50 backdrop-blur-md border-gray-700/50 sm:p-8">
     <!-- Header -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-100 mb-4">Component Guide</h1>
+      <h1 class="mb-4 text-3xl font-bold text-gray-100">Component Guide</h1>
       <p class="text-gray-400">
         Complete guide to using CyberOps UI components with examples and best practices.
       </p>
     </div>
 
     <!-- Breadcrumb Example -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">Breadcrumb</h2>
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">Breadcrumb</h2>
       <div class="mb-4">
         <CyberBreadcrumb :items="breadcrumbItems" />
       </div>
       <details class="mt-4">
         <summary class="cursor-pointer text-cyan-400 hover:text-cyan-300">View Code</summary>
-        <pre class="mt-2 p-4 bg-gray-900 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>&lt;CyberBreadcrumb :items="[
+        <pre class="p-4 mt-2 overflow-x-auto text-sm text-gray-300 bg-gray-900 rounded-lg"><code>&lt;CyberBreadcrumb :items="[
   { label: 'Home', to: '/', icon: IconHome },
   { label: 'Components', to: '/components' },
   { label: 'Guide' }
@@ -25,13 +25,13 @@
     </section>
 
     <!-- Button Examples -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">Buttons</h2>
-      
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">Buttons</h2>
+
       <!-- Button Variants -->
       <div class="space-y-4">
         <div>
-          <h3 class="text-lg font-medium text-gray-200 mb-3">Variants</h3>
+          <h3 class="mb-3 text-lg font-medium text-gray-200">Variants</h3>
           <div class="flex flex-wrap gap-3">
             <CyberButton variant="primary">Primary</CyberButton>
             <CyberButton variant="secondary">Secondary</CyberButton>
@@ -45,7 +45,7 @@
         </div>
 
         <div>
-          <h3 class="text-lg font-medium text-gray-200 mb-3">Sizes</h3>
+          <h3 class="mb-3 text-lg font-medium text-gray-200">Sizes</h3>
           <div class="flex flex-wrap items-center gap-3">
             <CyberButton size="sm">Small</CyberButton>
             <CyberButton size="md">Medium</CyberButton>
@@ -55,7 +55,7 @@
         </div>
 
         <div>
-          <h3 class="text-lg font-medium text-gray-200 mb-3">States</h3>
+          <h3 class="mb-3 text-lg font-medium text-gray-200">States</h3>
           <div class="flex flex-wrap gap-3">
             <CyberButton :icon="IconRocket">With Icon</CyberButton>
             <CyberButton loading>Loading</CyberButton>
@@ -67,46 +67,30 @@
 
       <details class="mt-4">
         <summary class="cursor-pointer text-cyan-400 hover:text-cyan-300">View Code</summary>
-        <pre class="mt-2 p-4 bg-gray-900 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>&lt;CyberButton variant="primary" size="md" :icon="IconRocket"&gt;
+        <pre class="p-4 mt-2 overflow-x-auto text-sm text-gray-300 bg-gray-900 rounded-lg"><code>&lt;CyberButton variant="primary" size="md" :icon="IconRocket"&gt;
   Click me
 &lt;/CyberButton&gt;</code></pre>
       </details>
     </section>
 
     <!-- Alert Examples -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">Alerts</h2>
-      
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">Alerts</h2>
+
       <div class="space-y-4">
-        <CyberAlert 
-          variant="success" 
-          title="Success!" 
-          message="Your operation completed successfully."
-          :dismissible="true"
-        />
-        <CyberAlert 
-          variant="danger" 
-          title="Error!" 
-          message="Something went wrong. Please try again."
-          :dismissible="true"
-        />
-        <CyberAlert 
-          variant="warning" 
-          title="Warning!" 
-          message="Please review your settings before proceeding."
-          :dismissible="true"
-        />
-        <CyberAlert 
-          variant="info" 
-          title="Info" 
-          message="Here's some helpful information for you."
-          :dismissible="true"
-        />
+        <CyberAlert variant="success" title="Success!" message="Your operation completed successfully."
+          :dismissible="true" />
+        <CyberAlert variant="danger" title="Error!" message="Something went wrong. Please try again."
+          :dismissible="true" />
+        <CyberAlert variant="warning" title="Warning!" message="Please review your settings before proceeding."
+          :dismissible="true" />
+        <CyberAlert variant="info" title="Info" message="Here's some helpful information for you."
+          :dismissible="true" />
       </div>
 
       <details class="mt-4">
         <summary class="cursor-pointer text-cyan-400 hover:text-cyan-300">View Code</summary>
-        <pre class="mt-2 p-4 bg-gray-900 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>&lt;CyberAlert 
+        <pre class="p-4 mt-2 overflow-x-auto text-sm text-gray-300 bg-gray-900 rounded-lg"><code>&lt;CyberAlert 
   variant="success" 
   title="Success!" 
   message="Your operation completed successfully."
@@ -116,19 +100,15 @@
     </section>
 
     <!-- Modal Example -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">Modal</h2>
-      
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">Modal</h2>
+
       <div class="flex flex-wrap gap-3 mb-4">
         <CyberButton @click="showModal = true">Open Modal</CyberButton>
         <CyberButton variant="secondary" @click="showLargeModal = true">Large Modal</CyberButton>
       </div>
 
-      <CyberModal 
-        v-model="showModal" 
-        title="Example Modal" 
-        :icon="IconSettings"
-      >
+      <CyberModal v-model="showModal" title="Example Modal" :icon="IconSettings">
         <p class="text-gray-300">This is a modal dialog example with CyberOps styling.</p>
         <template #footer>
           <CyberButton variant="ghost" @click="showModal = false">Cancel</CyberButton>
@@ -136,12 +116,7 @@
         </template>
       </CyberModal>
 
-      <CyberModal 
-        v-model="showLargeModal" 
-        title="Large Modal Example" 
-        size="lg"
-        :icon="IconDatabase"
-      >
+      <CyberModal v-model="showLargeModal" title="Large Modal Example" size="lg" :icon="IconDatabase">
         <div class="space-y-4">
           <p class="text-gray-300">This is a larger modal with more content space.</p>
           <div class="grid grid-cols-2 gap-4">
@@ -163,23 +138,23 @@
 
       <details class="mt-4">
         <summary class="cursor-pointer text-cyan-400 hover:text-cyan-300">View Code</summary>
-        <pre class="mt-2 p-4 bg-gray-900 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>&lt;CyberModal 
-  v-model="showModal" 
-  title="Example Modal" 
-  :icon="IconSettings"
-&gt;
-  &lt;p&gt;Modal content here&lt;/p&gt;
-  &lt;template #footer&gt;
-    &lt;CyberButton variant="primary"&gt;Confirm&lt;/CyberButton&gt;
-  &lt;/template&gt;
-&lt;/CyberModal&gt;</code></pre>
+        <pre class="p-4 mt-2 overflow-x-auto text-sm text-gray-300 bg-gray-900 rounded-lg"><code>&lt;CyberModal
+      v-model="showModal"
+      title="Example Modal"
+      :icon="IconSettings"
+      &gt;
+      &lt;p&gt;Modal content here&lt;/p&gt;
+      &lt;template #footer&gt;
+      &lt;CyberButton variant="primary"&gt;Confirm&lt;/CyberButton&gt;
+      &lt;/template&gt;
+      &lt;/CyberModal&gt;</code></pre>
       </details>
     </section>
 
     <!-- Notification Panel Example -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">Notification Panel</h2>
-      
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">Notification Panel</h2>
+
       <div class="flex gap-3 mb-4">
         <CyberButton @click="showNotifications = !showNotifications">
           Toggle Notifications
@@ -190,32 +165,28 @@
       </div>
 
       <div class="relative">
-        <CyberNotificationPanel 
-          :show="showNotifications"
-          :notifications="sampleNotifications"
-          @close="showNotifications = false"
-          @mark-read="markNotificationRead"
-          @mark-all-read="markAllNotificationsRead"
-        />
+        <CyberNotificationPanel :show="showNotifications" :notifications="sampleNotifications"
+          @close="showNotifications = false" @mark-read="markNotificationRead"
+          @mark-all-read="markAllNotificationsRead" />
       </div>
 
       <details class="mt-4">
         <summary class="cursor-pointer text-cyan-400 hover:text-cyan-300">View Code</summary>
-        <pre class="mt-2 p-4 bg-gray-900 rounded-lg text-sm text-gray-300 overflow-x-auto"><code>&lt;CyberNotificationPanel 
-  :show="showNotifications"
-  :notifications="notifications"
-  @close="showNotifications = false"
-  @mark-read="markNotificationRead"
-  @mark-all-read="markAllNotificationsRead"
-/&gt;</code></pre>
+        <pre class="p-4 mt-2 overflow-x-auto text-sm text-gray-300 bg-gray-900 rounded-lg"><code>&lt;CyberNotificationPanel
+        :show="showNotifications"
+        :notifications="notifications"
+        @close="showNotifications = false"
+        @mark-read="markNotificationRead"
+        @mark-all-read="markAllNotificationsRead"
+        /&gt;</code></pre>
       </details>
     </section>
 
     <!-- Color System -->
-    <section class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-100 mb-4">CyberOps Color System</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <section class="p-6 border border-gray-700 bg-gray-800/50 rounded-xl">
+      <h2 class="mb-4 text-xl font-semibold text-gray-100">CyberOps Color System</h2>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Primary</h3>
           <div class="flex items-center gap-2">
@@ -223,7 +194,7 @@
             <span class="text-sm text-gray-400">Cyan to Blue</span>
           </div>
         </div>
-        
+
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Success</h3>
           <div class="flex items-center gap-2">
@@ -231,7 +202,7 @@
             <span class="text-sm text-gray-400">Emerald to Green</span>
           </div>
         </div>
-        
+
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Danger</h3>
           <div class="flex items-center gap-2">
@@ -239,7 +210,7 @@
             <span class="text-sm text-gray-400">Red to Rose</span>
           </div>
         </div>
-        
+
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Warning</h3>
           <div class="flex items-center gap-2">
@@ -247,7 +218,7 @@
             <span class="text-sm text-gray-400">Amber to Orange</span>
           </div>
         </div>
-        
+
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Info</h3>
           <div class="flex items-center gap-2">
@@ -255,11 +226,11 @@
             <span class="text-sm text-gray-400">Blue to Indigo</span>
           </div>
         </div>
-        
+
         <div class="space-y-2">
           <h3 class="font-medium text-gray-200">Secondary</h3>
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded bg-gray-700"></div>
+            <div class="w-8 h-8 bg-gray-700 rounded"></div>
             <span class="text-sm text-gray-400">Gray</span>
           </div>
         </div>
@@ -270,11 +241,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { 
-  IconHome, 
-  IconSettings, 
-  IconDatabase, 
-  IconRocket 
+import {
+  IconHome,
+  IconSettings,
+  IconDatabase,
+  IconRocket
 } from '@tabler/icons-vue'
 import CyberBreadcrumb from '../components/ui/CyberBreadcrumb.vue'
 import CyberButton from '../components/ui/CyberButton.vue'
@@ -328,11 +299,11 @@ const addNotification = () => {
     'Please review your security settings.',
     'Performance metrics are now available.'
   ]
-  
+
   const randomType = types[Math.floor(Math.random() * types.length)]
   const randomTitle = titles[Math.floor(Math.random() * titles.length)]
   const randomMessage = messages[Math.floor(Math.random() * messages.length)]
-  
+
   sampleNotifications.value.unshift({
     id: Date.now(),
     type: randomType,
